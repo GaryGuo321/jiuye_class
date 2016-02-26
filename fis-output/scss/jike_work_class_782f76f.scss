@@ -1,0 +1,708 @@
+@import 'reset';
+$min-width:1100px;
+//对字体的设置大小
+$font-size:1px;
+//设置盒模型大小
+$box-size:1px;
+//设置position(left,right,top,bottom)大小
+$posi-size:1px;
+//设置行高的大小
+$li-hei-size:1px;
+//设置字间距
+$spac-size:1px;
+//设置背景图片的位置 background-position
+$back-img-size:1px;
+//设置圆角大小
+$radius-size:1px;
+//设置大小 border
+$bor-size:1px;
+//设置高和宽 width height
+$dimen-size:1px;
+//颜色
+$black-1:#333333;
+$black-2:#0e3347;
+$blcak-3:#1e1e1e;
+$black-4:#434343;
+$blue-1:#24adee;
+$blue-2:#26a9e1;
+$blue-3:#30a9e1;
+$blue-4:#0f6a99;
+$green-1:#8cc63e;
+$red-1:#df5844;
+$violet-1:#745a95;
+$yellow-1:#e5b700;
+$white-1:#fff;
+$white-2:#eee;
+$orange-1:#eb6100;
+$orange-2:#f39800;
+$grey-1:#555;
+$grey-2:#f5f5f5;
+$grey-3:#909090;
+$grey-4:#d8d8d8;
+$grey-5:#c9c9c9;
+$grey-6:#565656;
+$grey-7:#999999;
+//方向
+$top:top;
+$right:right;
+$left:left;
+$bottom:bottom;
+//背景图片
+@mixin background-image-set($img1x, $img2x) {
+    background-image: url($img1x);
+    background-image: -webkit-image-set(url($img1x) 1x, url($img2x) 2x);
+    background-image: -moz-image-set(url($img1x) 1x, url($img2x) 2x);
+    background-image: -o-image-set(url($img1x) 1x, url($img2x) 2x);
+    background-image: -ms-image-set(url($img1x) 1x, url($img2x) 2x);
+    background-repeat: no-repeat;
+}
+
+//圆角
+@mixin border-radius($value) {
+    -webkit-border-radius: $value;
+    -moz-border-radius: $value;
+    border-radius: $value;
+}
+
+//高和宽
+@mixin dimension($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+//两个立刻咨询按钮的共同样式，用于继承
+.communicate {
+    font-size: $font-size*20;
+    color: $white-1;
+    display: inline-block;
+    @include dimension($dimen-size*250, $dimen-size*50);
+    line-height: $li-hei-size*50;
+    margin-#{top}: $box-size*22;
+    @include border-radius($radius-size*5);
+    &:link,
+    &:visited {
+        background-color: $orange-1;
+    }
+    &:hover,
+    &:active {
+        background-color: $orange-2;
+    }
+}
+
+
+/*对主体框架的基本配置*/
+
+.container {
+    width: 100%;
+}
+
+.basic-set {
+    min-width: $min-width;
+}
+
+.basic-width {
+    width: $dimen-size*1000;
+    margin: 0 auto;
+}
+
+.header {
+    @extend .basic-set;
+    @extend .basic-width;
+    height: $dimen-size*60;
+}
+
+.main {
+    @extend .basic-set;
+}
+
+.footer {
+    @extend .basic-set;
+}
+
+// 顶部栏
+.header {
+    .homepage-in {
+        display: inline-block;
+        @include dimension( $dimen-size*112, $dimen-size*41);
+        @include background-image-set('../css/image/logo.png?__sprite', '../css/image/logo@2x.png?__sprite');
+        margin-#{top}: $box-size*11;
+        margin-#{left}: $box-size*100;
+    }
+    .user {
+        float: right;
+        line-height: $li-hei-size*60;
+        margin-#{right}: $box-size*100;
+        font-size: $font-size*13;
+        a {
+            color: $black-1;
+        }
+    }
+}
+
+// 内容主体部分
+.main {
+    // 首屏
+    .first-screen {
+        height: $dimen-size*440;
+        @include background-image-set('../css/image/1.png?__sprite', '../css/image/1@2x.png?__sprite');
+        background-size: 125% 125%;
+        background-position: $back-img-size*-170 $back-img-size*-54;
+        text-align: center;
+        .intro-color {
+            color: $white-1;
+        }
+        .fs-title {
+            font-size: $font-size*60;
+            color: $blue-1;
+            font-weight: 500;
+            letter-spacing: $spac-size*2;
+            padding-#{top}: $box-size*80;
+        }
+        .fs-til-small {
+            font-size: $font-size*26;
+            padding-#{top}: $box-size*20;
+            padding-#{bottom}: $box-size*10;
+        }
+        .fs-til-intro {
+            font-size: $font-size*16;
+            padding-#{top}: $box-size*5;
+        }
+        .benefit-all {
+            @extend .basic-width;
+            height: $dimen-size*280;
+        }
+        .benefit-1 {
+            @include background-image-set('../css/image/102.png?__sprite', '../css/image/102@2x.png?__sprite');
+        }
+        .benefit-2 {
+            @include background-image-set('../css/image/102-1.png?__sprite', '../css/image/102-1@2x.png?__sprite');
+        }
+        .benefit-3 {
+            @include background-image-set('../css/image/102-2.png?__sprite', '../css/image/102-2@2x.png?__sprite');
+        }
+        .benefit-4 {
+            @include background-image-set('../css/image/102-3.png?__sprite', '../css/image/102-3@2x.png?__sprite');
+        }
+        .class-benefit {
+            width: 25%;
+            float: left;
+            height: $dimen-size*250;
+            margin-#{top}: $box-size*30;
+            background-size: 100% 100%;
+        }
+        .communicate-1 {
+            @extend .communicate;
+        }
+    }
+    // 课程列表
+    .course-list {
+        @extend .basic-width;
+        text-align: center;
+        clear: both;
+        padding-#{top}: $box-size*70;
+        .course-list-title {
+            font-size: $font-size*33;
+            color: $black-2;
+            font-weight: 500;
+            margin-#{top}: $box-size*70;
+            margin-#{bottom}: $box-size*40;
+        }
+        .course-list-sort {
+            width: 100%;
+            padding-#{bottom}: $box-size*40;
+            margin-#{bottom}: $box-size*12;
+            cursor: pointer;
+            position: relative;
+            background-size: 100%;
+            overflow: hidden;
+            p {
+                color: $white-1;
+            }
+            .avg-salary {
+                font-size: $font-size*16;
+                padding-#{top}: $box-size*10;
+            }
+            .sort-big-title {
+                font-size: $font-size*47;
+                font-weight: 500;
+                padding-#{top}: $box-size*55;
+            }
+            .arrow {
+                display: inline-block;
+                @include dimension( $dimen-size*38, $dimen-size*51);
+                position: absolute;
+                right: $posi-size*52;
+                bottom: 50%;
+                margin-#{bottom}: $box-size*-25;
+                @include background-image-set('../css/image/arrow.png?__sprite', '../css/image/arrow@2x.png?__sprite');
+            }
+            .course-des {
+                width: 100%;
+                padding-#{bottom}: $box-size*40;
+                position: absolute;
+                top: $posi-size*60;
+                opacity: 0;
+                z-index: 1000;
+                .course-title {
+                    color: $white-1;
+                    font-weight: 500;
+                    font-size: $font-size*27;
+                    margin-#{top}: $box-size*20;
+                    margin-#{bottom}: $box-size*12;
+                }
+                .course-word-des {
+                    font-size: $font-size*16;
+                    margin-#{top}: $box-size*4;
+                }
+                .course-btn {
+                    display: inline-block;
+                    @include dimension($dimen-size*216, $dimen-size*42);
+                    line-height: $li-hei-size*42;
+                    border: $bor-size*1 solid $white-1;
+                    font-size: $font-size*19;
+                    @include border-radius($radius-size*3);
+                    margin-#{top}: $box-size*12;
+                    font-weight: 500;
+                    color: $white-1;
+                    letter-spacing: $spac-size*1;
+                }
+                .attend-web {
+                    &:hover,
+                    &:active {
+                        background-color: $white-1;
+                        color: $blue-2;
+                    }
+                }
+                .attend-andro {
+                    &:hover,
+                    &:active {
+                        background-color: $white-1;
+                        color: $green-1;
+                    }
+                }
+                .attend-jaweb {
+                    &:hover,
+                    &:active {
+                        background-color: $white-1;
+                        color: $red-1;
+                    }
+                }
+                .call-me-php {
+                    &:hover,
+                    &:active {
+                        background-color: $white-1;
+                        color: $violet-1;
+                    }
+                }
+                .call-me-data {
+                    &:hover,
+                    &:active {
+                        background-color: $white-1;
+                        color: $yellow-1;
+                    }
+                }
+                .num-frame {
+                    display: none;
+                }
+                .num {
+                    background-color: $white-2;
+                    @include dimension( $dimen-size*150, $dimen-size*36);
+                    position: absolute;
+                    bottom: 43px;
+                    right: $posi-size*213;
+                    @include border-radius($radius-size*2);
+                    line-height: $li-hei-size*36;
+                    font-size: $font-size*15;
+                    color: $blcak-3;
+                    text-align: center;
+                }
+                .little-arrow {
+                    display: inline-block;
+                    border: $bor-size*7 solid $white-2;
+                    position: absolute;
+                    bottom: 55px;
+                    right: $posi-size*363;
+                    border-left-color: transparent;
+                    border-top-color: transparent;
+                    border-bottom-color: transparent;
+                }
+            }
+            .course-des-web {
+                background-color: $blue-2;
+            }
+            .course-des-andro {
+                background-color: $green-1;
+            }
+            .course-des-jaweb {
+                background-color: $red-1;
+            }
+            .course-des-php {
+                background-color: $violet-1;
+            }
+            .course-des-data {
+                background-color: $yellow-1;
+            }
+        }
+        .list-sort-1 {
+            @include background-image-set('../css/image/web.png?__sprite', '../css/image/web@2x.png?__sprite');
+            border: $bor-size*1 solid $blue-2;
+        }
+        .list-sort-2 {
+            @include background-image-set('../css/image/android.png?__sprite', '../css/image/android@2x.png?__sprite');
+            border: $bor-size*1 solid $green-1;
+        }
+        .list-sort-3 {
+            @include background-image-set('../css/image/javaweb.png?__sprite', '../css/image/javaweb@2x.png?__sprite');
+            border: $bor-size*1 solid $red-1;
+        }
+        .list-sort-4 {
+            @include background-image-set('../css/image/php.png?__sprite', '../css/image/php@2x.png?__sprite');
+            border: $bor-size*1 solid $violet-1;
+        }
+        .list-sort-5 {
+            @include background-image-set('../css/image/data.png?__sprite', '../css/image/data@2x.png?__sprite');
+            border: $bor-size*1 solid $yellow-1;
+        }
+    }
+    // 老师介绍
+    .teacher-intro {
+        @include dimension(100%, $dimen-size*600);
+        margin-#{top}: $box-size*80;
+        @include background-image-set('../css/image/main_12.png?__sprite', '../css/image/main_12@2x.png?__sprite');
+        background-size: 100% 100%;
+        .intro-title {
+            font-size: $font-size*35;
+            color: $white-1;
+            font-weight: 500;
+            padding-#{top}: $box-size*50;
+            text-align: center;
+        }
+        .swiper-container {
+            @include dimension($dimen-size*1100, $dimen-size*350);
+            margin-#{top}: $box-size*80;
+        }
+        .swiper-slide {
+            @include dimension( $dimen-size*1100, $dimen-size*280);
+        }
+        .teacher-message {
+            @include dimension( $dimen-size*524, $dimen-size*280);
+            position: relative;
+            img {
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                top: $posi-size*15;
+            }
+            .intro-message {
+                @include dimension($dimen-size*280, $dimen-size*280);
+                background-color: $white-1;
+                padding-#{left}: $box-size*140;
+                float: right;
+                .tea-name {
+                    margin-#{top}: $box-size*36;
+                    font-size: $font-size*24;
+                    font-weight: 500;
+                    color: $black-4;
+                }
+                .tea-position {
+                    margin-#{top}: $box-size*10;
+                    margin-#{bottom}: $box-size*12;
+                    font-size: $font-size*16;
+                    color: $blue-3;
+                }
+                .tea-text {
+                    font-size: $font-size*14;
+                    color: $black-4;
+                    line-height: $li-hei-size*23;
+                    margin-#{right}: $box-size*16;
+                }
+            }
+        }
+        .left-message {
+            float: left;
+        }
+        .right-message {
+            float: right;
+        }
+    }
+    // 学生评价
+    .assess {
+        @include dimension(100%, $dimen-size*640);
+        background-color: $grey-2;
+    }
+    .all-assess {
+        min-width: $dimen-size*1000;
+        margin: 0 auto;
+        position: relative;
+        .symbol {
+            display: inline-block;
+            z-index: 1100;
+        }
+        .le-symbol {
+            @include background-image-set('../css/image/fuhao.png?__sprite', '../css/image/fuhao@2x.png?__sprite');
+            @include dimension($dimen-size*36, $dimen-size*37);
+            position: absolute;
+            bottom: $posi-size*-25;
+            left: $posi-size*296;
+        }
+        .ri-symbol {
+            @include background-image-set('../css/image/fuhao.png?__sprite', '../css/image/fuhao@2x.png?__sprite');
+            background-position: $back-img-size*-56 $back-img-size*1;
+            @include dimension($dimen-size*49, $dimen-size*51);
+            position: absolute;
+            top: $posi-size*113;
+            right: $posi-size*158;
+        }
+        .assess-title {
+            font-size: $font-size*35;
+            font-weight: 500;
+            padding-#{top}: $box-size*50;
+            text-align: center;
+            padding-#{bottom}: $box-size*50;
+        }
+        .student-assess {
+            @include dimension( $dimen-size*1000, $dimen-size*110);
+            margin: 0 auto;
+            margin-#{bottom}: $box-size*30;
+            .basic-message {
+                @include dimension($dimen-size*100, $dimen-size*110);
+                text-align: center;
+                float: left;
+                .stu-img {
+                    @include dimension($dimen-size*65, $dimen-size*65);
+                    margin: 0 auto;
+                    background-size: 100% 100%;
+                }
+                .songtao-img {
+                    @include background-image-set('../css/image/songtao.png?__sprite', '../css/image/songtao@2x.png?__sprite');
+                }
+                .gary-img {
+                    @include background-image-set('../css/image/GaryGuo.png?__sprite', '../css/image/GaryGuo@2x.png?__sprite');
+                }
+                .deng-img {
+                    @include background-image-set('../css/image/deng.png?__sprite', '../css/image/deng@2x.png?__sprite');
+                }
+                .stu-name {
+                    font-weight: 500;
+                    font-size: $font-size*15;
+                    color: $black-2;
+                    margin-#{top}: $box-size*5;
+                }
+                .stu-state {
+                    font-size: $font-size*13;
+                    color: $grey-3;
+                    margin-#{top}: $box-size*3;
+                }
+            }
+            .content-frame {
+                @include dimension($dimen-size*900, $dimen-size*110);
+                float: left;
+                position: relative;
+                .assess-content {
+                    @include dimension($dimen-size*850, $dimen-size*110);
+                    float: right;
+                    border: $bor-size*1 solid $grey-4;
+                    @include border-radius($radius-size*3);
+                    p {
+                        font-size: $font-size*17;
+                        color: $blue-4;
+                        margin: $box-size*33 $box-size*50 0 $box-size*40;
+                    }
+                }
+                .assess-content:after,
+                .assess-content:before {
+                    @include dimension(0, 0);
+                    border: solid transparent;
+                    content: '';
+                    left: 0;
+                    position: absolute;
+                }
+                .assess-content:after {
+                    border-width: $bor-size*10;
+                    border-right-width: $bor-size*24;
+                    border-right-color: $grey-2;
+                    top: $posi-size*21;
+                    left: $posi-size*15;
+                }
+                .assess-content:before {
+                    border-width: $bor-size*11;
+                    border-right-width: $bor-size*26;
+                    border-right-color: $grey-4;
+                    top: $posi-size*20;
+                    left: $posi-size*12;
+                }
+            }
+        }
+    }
+    // 学习成果视频
+    .study-vedio {
+        @include dimension(100%, $dimen-size*550);
+        position: relative;
+        @include background-image-set('../css/image/10.png?__sprite', '../css/image/10@2x.png?__sprite');
+        background-size: 100% 100%;
+        text-align: center;
+        .study-title {
+            font-size: $font-size*35;
+            font-weight: 500;
+            color: $white-1;
+            padding-#{top}: $box-size*30;
+        }
+        .swiper-container {
+            @include dimension($dimen-size*723, $dimen-size*407);
+            margin-#{top}: $box-size*30;
+        }
+        .btn {
+            display: inline-block;
+            @include dimension($dimen-size*53, $dimen-size*70);
+            @include background-image-set('../css/image/arrow1.png?__sprite', '../css/image/arrow1@2x.png?__sprite');
+            position: absolute;
+        }
+        #btn1 {
+            @extend .btn;
+            left: 10%;
+            top: 50%;
+            background-position: 0 0;
+        }
+        #btn2 {
+            @extend .btn;
+            right: 10%;
+            top: 50%;
+            background-position: $back-img-size*-60 0;
+        }
+    }
+    // faq问答
+    .faq {
+        @include dimension(100%, $dimen-size*650);
+        @include background-image-set('../css/image/back.png?__sprite', '../css/image/back@2x.png?__sprite');
+        background-size: 100% 100%;
+        border-#{bottom}: $bor-size*1 solid $grey-5;
+    }
+    .faq-all {
+        width: $dimen-size*950;
+        margin: 0 auto;
+        padding-#{top}: $box-size*56;
+        position: relative;
+        // text-align: center;
+        .communicate-2 {
+            @extend .communicate;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            margin-#{left}: $box-size*-125;
+        }
+    }
+    .faq-tltle {
+        height: $dimen-size*66;
+        line-height: $li-hei-size*66;
+        text-align: center;
+        font-size: $font-size*25;
+        color: $white-1;
+        background-color: $blue-4;
+        @include background-image-set('../css/image/fqa.png?__sprite', '../css/image/fqa@2x.png?__sprite');
+        background-position: $back-img-size*406 $back-img-size*10;
+        padding-#{left}: $box-size*36;
+    }
+    .faq-cont-all {
+        background-color: $white-1;
+        border-bottom: $bor-size*1 solid #ededed;
+        padding-#{top}: $box-size*20;
+        padding-#{bottom}: $box-size*20;
+        clear: both;
+        .faq-basic-1 {
+            margin-#{left}: $box-size*70;
+        }
+        h4 {
+            @extend .faq-basic-1;
+            font-weight: normal;
+            color: $blue-4;
+            font-size: $font-size*18;
+            margin-#{right}: $box-size*40;
+            margin-#{bottom}: $box-size*5;
+        }
+        .faq-basic-2 {
+            color: $grey-6;
+            font-size: $font-size*15;
+            line-height: $li-hei-size*25;
+            display: inline-block;
+        }
+        span {
+            @extend .faq-basic-2;
+            float: left;
+            @extend .faq-basic-1;
+        }
+        p {
+            @extend .faq-basic-2;
+            width: $dimen-size*800;
+            display: inline-block;
+        }
+    }
+}
+
+// 尾部
+.footer {
+    clear: both;
+    text-align: center;
+    padding-#{top}: $box-size*40;
+    padding-#{bottom}: $box-size*40;
+    font-size: $font-size*12;
+    color: $grey-7;
+    a {
+        color: $grey-7;
+    }
+}
+
+// benefit里面的内容
+.class-benefit {
+    .ben-img {
+        @include dimension($dimen-size*90, $dimen-size*90);
+        margin-#{left}: auto;
+        margin-#{right}: auto;
+        margin-#{top}: $box-size*35;
+        @include background-image-set('../css/image/like.png?__sprite', '../css/image/like@2x.png?__sprite');
+    }
+    .ben-img-1 {
+        background-position: $back-img-size*15 0;
+    }
+    .ben-img-2 {
+        background-position: $back-img-size*-269 0;
+    }
+    .ben-img-3 {
+        background-position: $back-img-size*-547 0;
+    }
+    .ben-img-4 {
+        background-position: $back-img-size*-828 0;
+    }
+    .ben-title {
+        font-weight: 500;
+        font-size: $font-size*23;
+        margin-#{bottom}: $box-size*13;
+    }
+    p {
+        font-size: $font-size*15;
+        margin-#{top}: $box-size*3;
+    }
+}
+
+// 分页器
+.pagination {
+    position: absolute;
+    z-index: 20;
+    bottom: $posi-size*10;
+    width: 100%;
+    text-align: center;
+}
+
+.swiper-pagination-switch {
+    display: inline-block;
+    @include dimension($dimen-size*8, $dimen-size*8);
+    @include border-radius($radius-size*8);
+    background: transparent;
+    margin: 0 $box-size*16;
+    opacity: 0.8;
+    border: $bor-size*1 solid $blue-3;
+    cursor: pointer;
+}
+
+.swiper-active-switch {
+    background: $blue-3;
+}
